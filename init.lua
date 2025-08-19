@@ -51,21 +51,9 @@ Kickstart Guide:
       - Tutor
       - <enter key>
 
-    (If you already know the Neovim basics, you can skip this step.)
-
-  Once you've completed that, you can continue working through **AND READING** the rest
-  of the kickstart init.lua.
-
-  Next, run AND READ `:help`.
-    This will open up a help window with some basic information
-    about reading, navigating and searching the builtin help documentation.
-
-    This should be the first place you go to look when you're stuck or confused
-    with something. It's one of my favorite Neovim features.
-
-    MOST IMPORTANTLY, we provide a keymap "<space>sh" to [s]earch the [h]elp documentation,
-    which is very useful when you're not exactly sure of what you're looking for.
-
+        { import = 'custom.plugins' },
+        -- Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
+        { import = 'custom.plugins' },
   I have left several `:help X` comments throughout the init.lua
     These are hints about where to find more information about the relevant settings,
     plugins or Neovim features used in Kickstart.
@@ -975,21 +963,7 @@ require('lazy').setup({
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
 
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional, for file icons
-    config = function()
-      -- Setup nvim-tree (call at plugin init)
-      require('nvim-tree').setup {
-        filters = { dotfiles = true }, -- Hide dotfiles for a cleaner view:contentReference[oaicite:5]{index=5}
-        renderer = { group_empty = true }, -- (Optional) Compact folders
-        -- Add more options if needed, but the defaults are good for a simple setup
-      }
-      -- Optional keymap: toggle file tree with <leader>e
-      vim.keymap.set('n', '<leader>E', '<Cmd>NvimTreeToggle<CR>', { desc = 'Toggle File Tree' })
-      vim.keymap.set('n', '<leader>e', '<Cmd>NvimTreeFocus<CR>', { desc = 'Focus File Tree' })
-    end,
-  },
+  -- nvim-tree config moved to custom/plugins/nvim-tree.lua
 
   -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
   --
@@ -1006,8 +980,7 @@ require('lazy').setup({
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.l---
   --    This is the easiest way to modularize your config.
   --
-  --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
