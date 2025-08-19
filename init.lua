@@ -986,7 +986,8 @@ require('lazy').setup({
         -- Add more options if needed, but the defaults are good for a simple setup
       }
       -- Optional keymap: toggle file tree with <leader>e
-      vim.keymap.set('n', '<leader>e', '<Cmd>NvimTreeToggle<CR>', { desc = 'Toggle File Tree' })
+      vim.keymap.set('n', '<leader>E', '<Cmd>NvimTreeToggle<CR>', { desc = 'Toggle File Tree' })
+      vim.keymap.set('n', '<leader>e', '<Cmd>NvimTreeFocus<CR>', { desc = 'Focus File Tree' })
     end,
   },
 
