@@ -1008,5 +1008,11 @@ require('lazy').setup({
   },
 })
 
+-- Conditionally load local settings if present (e.g., for per-machine config)
+local local_config = vim.fn.stdpath('config') .. '/lua/local.lua'
+if vim.fn.filereadable(local_config) == 1 then
+  dofile(local_config)
+end
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
